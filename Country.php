@@ -25,7 +25,7 @@ public static function boot()
 
     static::creating(function ($model) {
 
-    $tempSlug = $model->name;
+    $tempSlug = $model->{obj_name};
 
     $model->slug = str_slug($tempSlug);// change the ToBeSluggiefied
 
@@ -54,7 +54,7 @@ public static function boot()
 static::updating(function ($model) {
 
     // Only do the slug check if changing
-    $newSlug = str_slug($model->name);
+    $newSlug = str_slug($model->{obj_name});
     if ($model->slug != $newSlug) {
         $model->slug = $newSlug;
 
